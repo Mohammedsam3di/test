@@ -1,0 +1,195 @@
+<mvc:View xmlns:layout="sap.ui.layout" xmlns:smartmultiedit="sap.ui.comp.smartmultiedit"
+ xmlns:vk="sap.ui.vk" xmlns:mvc="sap.ui.core.mvc"  
+ xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:obj="sap.m"  xmlns:core="sap.ui.core"
+ xmlns:html="http://www.w3.org/1999/xhtml" controllerName="buyershub.controller.Overview">
+  
+ <!-- <Page showHeader="false">
+    <HBox width="100%" id="hbox0">              
+     <items>                 -->
+        <Image width="100%" height="20%" id="image0" src="/Images/GPU_Banner_2000x378_black_world.png"/>
+     <!-- </items>                
+    </HBox> -->
+
+<Page showHeader="false" enableScrolling="true">
+ <tnt:ToolPage id="toolPage" >
+<tnt:sideContent>
+    <tnt:SideNavigation
+        id="sideNavigationHome"
+        selectedKey="Home"
+        itemSelect="pressSideHome"
+    >
+        <tnt:NavigationList>
+            <tnt:NavigationListItem text="Home" />
+            <tnt:NavigationListItem text="Suppliers" />
+            <tnt:NavigationListItem text="Parts" />
+            <tnt:NavigationListItem text="App Launcher" />
+            <tnt:NavigationListItem text="Analytics" />
+            <tnt:NavigationListItem text="News" />
+            <tnt:NavigationListItem text="Help" />
+            <tnt:NavigationListItem text="Settings" />
+        </tnt:NavigationList>
+    </tnt:SideNavigation>
+</tnt:sideContent>
+
+
+<tnt:mainContents>
+<ScrollContainer vertical="false" horizontal="true">
+<VBox
+    width="100%"
+    direction="Column"
+    id="vBoxHome"
+    visible="{appModel>/bVisHome}"
+>
+    <Title titleStyle="H4" text=" Welcome to Buyer's Hub" class="sapUiMediumMarginTop sapUiMediumMarginBottom" textAlign="Center" width="80%"/>
+    <VBox width="100%">
+        <ScrollContainer
+            height="80%"
+            vertical="true"
+            width="1200px"
+        >
+            <SlideTile
+                tiles="{appModel>/slideTileCollection1}"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+            >
+                <tiles>
+                    <GenericTile
+                        backgroundImage="{appModel>image}"
+                        frameType="TwoByOne"
+                        press="onSlide1(${appModel>tileId})"
+                    >
+                        <TileContent footer="{appModel>news}">
+                            <NewsContent contentText="{appModel>text}" />
+                        </TileContent>
+                    </GenericTile>
+                </tiles>
+            </SlideTile>
+        </ScrollContainer>
+    </VBox>
+    <VBox width="100%">
+        <ScrollContainer
+            height="80%"
+            vertical="true"
+            width="1200px"
+        >
+            <SlideTile
+                tiles="{appModel>/slideTileCollection2}"
+                class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+            >
+                <tiles>
+                    <GenericTile
+                        backgroundImage="{appModel>image}"
+                        frameType="TwoByOne"
+                        press="onSlide2"
+                    >
+                        <TileContent footer="{appModel>news}">
+                            <NewsContent contentText="{appModel>text}" />
+                        </TileContent>
+                    </GenericTile>
+                </tiles>
+            </SlideTile>
+        </ScrollContainer>
+    </VBox>
+
+    <HBox>
+        <Title
+            titleStyle="H5"
+            text="My Favourites"
+            class="sapUiSmallMargin"
+        />
+        <HBox backgroundDesign="Solid" />
+
+        
+    </HBox>
+</VBox>
+
+
+<layout:VerticalLayout id="vbox03" 
+    width="100%"
+    visible="{appModel>/bVisApp}">
+
+
+	<layout:HorizontalLayout  >
+        <SearchField  placeholder="Search for ..." id="idSearch" width="250%"  
+            liveChange="onSearch" showRefreshButton="true" enableSuggestions="true" search="onSearch" />
+    </layout:HorizontalLayout>	
+
+    <Title titleStyle="H4" text="General Topics" class="sapUiSmallMargin"/>
+
+    <FlexBox width="100%" alignItems="Start" 
+    justifyContent="Start"
+    items="{appModel>/generalTopics}">
+    <items>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout"
+     header="{appModel>text}"
+    frameType="OneByOne" press="onGeneralTilePress">
+    <TileContent  frameType="TwoThirds">
+            <layout:VerticalLayout>
+                            <Image width="100%" height="50%" id="genImg" src="{appModel>image}"/>
+                            <core:Icon
+                    src="{= ${/isFavoriteOrgdoku} ? 'sap-icon://favorite' : 'sap-icon://unfavorite'}"
+                    color="{= ${/isFavoriteOrgdoku} ? 'orange' : 'gray'}" size="180%" height="200%"
+                    press="onFavoritePress"
+                    id="Orgdoku"
+                   class="favoriteIcon" /> 
+            </layout:VerticalLayout>
+                        </TileContent>
+    </GenericTile></items>
+    </FlexBox>
+
+
+<Title titleStyle="H4" text="Operational Topics" class="sapUiSmallMargin"/>
+<ScrollContainer vertical="false" horizontal="true">
+    <FlexBox  alignItems="Start" class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+    justifyContent="Start"
+    items="{appModel>/operationalTopics}">
+    <items>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+    headerImage="sap-icon://unfavorite" 
+    frameType="OneByOne" press="onGeneralTilePress">
+    <TileContent footer="{appModel>text}" frameType="TwoThirds">
+                            <Image width="100%" height="50%" id="operImg" src="{appModel>image}"/>
+                        </TileContent>
+    </GenericTile></items>
+    </FlexBox>
+</ScrollContainer>
+<Title titleStyle="H4" text="Tools" class="sapUiSmallMargin"/>
+
+    <FlexBox width="100%" alignItems="Start" 
+    justifyContent="Start"
+    items="{appModel>/tools}">
+    <items>
+    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+    header="{appModel>text}" width=""
+    
+    frameType="OneByOne" press="onGeneralTilePress">
+
+
+    <TileContent  footer="{appModel>text}" frameType="TwoThirds"> 
+    <layout:VerticalLayout width="80%" >
+    <layout:VerticalLayout width="60%"> 
+          <Image width="90%" height="35%" src="{appModel>image}"/> 
+          </layout:VerticalLayout> 
+          <layout:VerticalLayout width="60%"> 
+    <layout:HorizontalLayout >          
+<ImageContent src="sap-icon://hint" ></ImageContent>
+<ImageContent src="sap-icon://unfavorite" ></ImageContent>
+</layout:HorizontalLayout>   
+</layout:VerticalLayout>
+</layout:VerticalLayout>
+
+                        </TileContent>
+
+    </GenericTile></items>
+    </FlexBox>
+
+
+</layout:VerticalLayout>	
+
+</ScrollContainer>
+
+</tnt:mainContents>
+</tnt:ToolPage>
+ </Page>
+
+
+</mvc:View>

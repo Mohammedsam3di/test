@@ -1,0 +1,17 @@
+{"slideTileCollection":[
+    {"tileID":1,
+      "image": "/Images/GPU_Banner_2000x378_black_world.png",
+      "text": "BSH Growth and Value Creation Strategy 2030:Strategy News on We. Act. Smartly in Sustainability",
+      "news": "B/S/H News"
+    },
+     {"tileID":2,
+     "image": "/Images/GPU_Banner_2000x378_black_world.png",
+     "text": "BSH celebrates 100 years of IFA: Bosch highlights 2024",
+     "news": "B/S/H News"
+    },
+    {"tileID":3,
+    "image": "/Images/GPU_Banner_2000x378_black_world.png",
+    "text": "German Federal Chancellor Olaf Scholz visits the IFA booths of Bosch and Siemens",
+    "news": "B/S/H News"
+   }
+  ]}

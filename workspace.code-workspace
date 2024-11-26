@@ -1,1 +1,9 @@
-{"folders":[{"path":"basicdemo"}],"settings":{}}
+{"folders":[
+        {
+            "path": "basicdemo"
+        },
+        {
+            "name": "buyershub",
+            "path": "buyershub"
+        }
+    ],"settings":{}}

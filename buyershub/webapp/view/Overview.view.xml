@@ -6,11 +6,11 @@
  <!-- <Page showHeader="false">
     <HBox width="100%" id="hbox0">              
      <items>                 -->
-        <Image width="100%" height="20%" id="image0" src="/Images/GPU_Banner_2000x378_black_world.png"/>
+        <!-- <Image width="100%" height="20%" id="image0" src="/Images/GPU_Banner_2000x378_black_world.png"/> -->
      <!-- </items>                
     </HBox> -->
 
-<Page showHeader="false" enableScrolling="true">
+<Page showHeader="false" enableScrolling="true" >
  <tnt:ToolPage id="toolPage" >
 <tnt:sideContent>
     <tnt:SideNavigation
